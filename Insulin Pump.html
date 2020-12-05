@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>Insulin Pump</title>
+<script type="text/javascript">
+
+
+var mins = 0;
+var secs = 9;
+
+var minutes, seconds;
+var gluco = 100; //gluco for glucose in human body
+
+
+function countdown() {
+  setTimeout('Decrement()',1000);
+}
+
+function Decrement() {
+    
+    if (seconds < 59) {
+        seconds.value = secs;
+		 } else {
+        minutes.value = getminutes();
+        seconds.value = getseconds();
+    }
+    secs--;
+
+    console.log(minutes + ', ' + seconds);
+    if (seconds.value <= 0 && minutes.value <= 0) {
+          if (window.confirm('Click OK for Insulin Info') && gluco ==100 ) {
+			
+        alert('Your Blood Glucose is between 61-150 (mg/dL)');
+		alert('Insulin Unit is 0');
+		alert('Chill, Its Normal.');
+      } 
+    } else {
+		setTimeout('Decrement()',1000);
+    }
+}
+
+function getminutes() {
+  // minutes is seconds divided by 60
+  mins = Math.floor(secs / 60);
+  return mins;
+}
+
+function getseconds() {
+  // take mins remaining (as seconds)
+  return secs-Math.round(mins *60);
+}
+
+
+document.onreadystatechange = function() {if(document.readyState == "complete") {
+    minutes = document.getElementById("minutes");
+    seconds = document.getElementById("seconds");
+
+    countdown();
+  }
+}
+
+</script>
+
+
+
+</head>
+<body>
+<h1 id="text">Sensor is running</h1>
+    <input id="minutes" type="text" style="width: 50px; border:none; background-color:none; font-size: 50px; font-weight:bold;">
+    <input id="seconds" type="text" style="width: 50px; border: none; background-color:none; font-size: 50px; font-weight: bold;">
+</body>
+
+
+
+<style> 
+@import url(ionicons.min.css);
+@import url(bootstrap.min.css);
+@import url(magnific-popup.css);
+@import url(flexslider.css);
+@import url(animsition.min.css);
+@import url(photoswipe.css);
+@import url(default-skin/default-skin.css);
+@import url(jquery.mCustomScrollbar.min.css);
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800"); /*ALL above are for style*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, s, samp,
+small, strike, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.1em;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #16A085; }
+  
+  #minutes{
+	  margin-left:625px;
+	  margin-top:30px;
+	  background-color:#0C9;
+	  text-align:center;
+	  color:#FFF;
+	  border-radius:50px;
+	  
+	  }
+	#seconds{
+		background-color:#0C9;
+		text-align:center;
+		color:#FFF;
+		border-radius:50px;
+		}
+	#text{
+		margin-left:608px;	
+		color:#0C9;
+		margin-top:10px;
+
+			}
+
+
+</style>
+</html>
